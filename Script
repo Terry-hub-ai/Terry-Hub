@@ -1,0 +1,63 @@
+-- Terry Hub with Rayfield UI Library
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+-- Create the Main Window
+local Window = Rayfield:CreateWindow({
+    Name = "Terry Hub",
+    LoadingTitle = "Loading Terry Hub...",
+    LoadingSubtitle = "Please wait",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = nil, -- Change to a folder name to save configs
+        FileName = "TerryHubConfig"
+    },
+    Discord = {
+        Enabled = false, -- Set to true and add your server invite for Discord integration
+        Invite = "yourdiscordinvite", -- Replace with your Discord invite
+        RememberJoins = true
+    },
+    KeySystem = false, -- Set to true if you want to add a key system
+    KeySettings = {
+        Title = "Terry Hub Key System",
+        Subtitle = "Enter the Key",
+        Note = "Ask the admin for a key",
+        FileName = "TerryHubKey",
+        SaveKey = true,
+        GrabKeyFromSite = false,
+        Key = "example_key"
+    }
+})
+
+-- Add a Tab
+local MainTab = Window:CreateTab("Main", 4483362458) -- Icon ID from Roblox's decal asset
+
+-- Add a Button: Script 1
+MainTab:CreateButton({
+    Name = "Execute Script 1",
+    Callback = function()
+        print("Script 1 executed!")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        if character:FindFirstChild("Humanoid") then
+            character.Humanoid.WalkSpeed = 50
+        end
+    end,
+})
+
+-- Add a Button: Script 2
+MainTab:CreateButton({
+    Name = "Execute Script 2",
+    Callback = function()
+        print("Script 2 executed!")
+        local player = game.Players.LocalPlayer
+        local part = Instance.new("Part")
+        part.Size = Vector3.new(5, 1, 5)
+        part.Position = player.Character.HumanoidRootPart.Position + Vector3.new(0, 5, 0)
+        part.Anchored = true
+        part.Parent = workspace
+    end,
+})
+
+-- Add a Label
+MainTab:CreateLabel("Welcome to Terry Hub!")
