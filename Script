@@ -13,11 +13,11 @@ local Window = Rayfield:CreateWindow({
         FileName = "TerryHubConfig"
     },
     Discord = {
-        Enabled = false, -- Set to true and add your server invite for Discord integration
-        Invite = "yourdiscordinvite", -- Replace with your Discord invite
+        Enabled = true, -- Set to true and add your server invite for Discord integration
+        Invite = "https://discord.gg/FehxdA3w", -- Replace with your Discord invite
         RememberJoins = true
     },
-    KeySystem = false, -- Set to true if you want to add a key system
+    KeySystem = true, -- Set to true if you want to add a key system
     KeySettings = {
         Title = "Terry Hub Key System",
         Subtitle = "Enter the Key",
@@ -25,7 +25,7 @@ local Window = Rayfield:CreateWindow({
         FileName = "TerryHubKey",
         SaveKey = true,
         GrabKeyFromSite = false,
-        Key = "example_key"
+        Key = "TerryHubBeta"
     }
 })
 
