@@ -1,63 +1,96 @@
--- Terry Hub with Rayfield UI Library
+-- Load Rayfield Library
+local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
 
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+-- Key System Configuration
+local validKey = "TerryHubMobile123" -- Set your desired key here
+local isAuthenticated = false
 
 -- Create the Main Window
 local Window = Rayfield:CreateWindow({
-    Name = "Terry Hub",
-    LoadingTitle = "Loading Terry Hub...",
-    LoadingSubtitle = "Please wait",
+    Name = "Terry Hub - Mobile Edition",
+    LoadingTitle = "Terry Hub",
+    LoadingSubtitle = "Optimized for Mobile Users!",
     ConfigurationSaving = {
         Enabled = true,
-        FolderName = nil, -- Change to a folder name to save configs
-        FileName = "TerryHubConfig"
+        FolderName = "TerryHubData",
+        FileName = "MobileConfig"
     },
     Discord = {
-        Enabled = true, -- Set to true and add your server invite for Discord integration
-        Invite = "https://discord.gg/FehxdA3w", -- Replace with your Discord invite
+        Enabled = true,
+        Invite = "https://discord.gg/FehxdA3w", -- Replace with your Discord invite link
         RememberJoins = true
     },
-    KeySystem = true, -- Set to true if you want to add a key system
+    KeySystem = true, -- Enable Key System
     KeySettings = {
         Title = "Terry Hub Key System",
-        Subtitle = "Enter the Key",
-        Note = "Ask the admin for a key",
-        FileName = "TerryHubKey",
+        Subtitle = "TerryHubBeta",
+        Note = "Find the key in our Discord!",
         SaveKey = true,
-        GrabKeyFromSite = false,
-        Key = "TerryHubBeta"
+        Key = validKey
     }
 })
 
--- Add a Tab
-local MainTab = Window:CreateTab("Main", 4483362458) -- Icon ID from Roblox's decal asset
+-- Create Scripts Tab
+local ScriptsTab = Window:CreateTab("Scripts", 4483362458) -- Replace with your preferred icon ID
 
--- Add a Button: Script 1
-MainTab:CreateButton({
-    Name = "Execute Script 1",
+-- Add Script Buttons
+ScriptsTab:CreateButton({
+    Name = "Infinite Yield Admin",
     Callback = function()
-        print("Script 1 executed!")
-        local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
-        if character:FindFirstChild("Humanoid") then
-            character.Humanoid.WalkSpeed = 50
-        end
-    end,
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end
 })
 
--- Add a Button: Script 2
-MainTab:CreateButton({
-    Name = "Execute Script 2",
+ScriptsTab:CreateButton({
+    Name = "Vehicle Legends",
     Callback = function()
-        print("Script 2 executed!")
-        local player = game.Players.LocalPlayer
-        local part = Instance.new("Part")
-        part.Size = Vector3.new(5, 1, 5)
-        part.Position = player.Character.HumanoidRootPart.Position + Vector3.new(0, 5, 0)
-        part.Anchored = true
-        part.Parent = workspace
-    end,
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/main/Vehicle%20legends"))()
+    end
 })
 
--- Add a Label
-MainTab:CreateLabel("Welcome to Terry Hub!")
+ScriptsTab:CreateButton({
+    Name = "The Strongest Battlegrounds",
+    Callback = function()
+        loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Phantasm-TSB-Script-16254"))()
+    end
+})
+
+ScriptsTab:CreateButton({
+    Name = "Owl Hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))()
+    end
+})
+
+ScriptsTab:CreateButton({
+    Name = "Aurora Hub",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/cocotv666/Aurora/refs/heads/main/Aurora_Loader'))()
+    end
+})
+
+-- Add Utility Tab for Extras
+local UtilityTab = Window:CreateTab("Utility", 4483362458) -- Replace with your preferred icon ID
+
+UtilityTab:CreateButton({
+    Name = "Close Terry Hub",
+    Callback = function()
+        Rayfield:Destroy()
+    end
+})
+
+-- Add Credits Tab
+local CreditsTab = Window:CreateTab("Credits", 4483362458) -- Replace with your preferred icon ID
+
+CreditsTab:CreateSection("Created By: Dollythete")
+CreditsTab:CreateParagraph({
+    Title = "About Terry Hub",
+    Content = "Terry Hub is optimized for mobile users and offers robust scripting options for Roblox. Join our Discord for updates and support!"
+})
+
+-- Notify When Ready
+Rayfield:Notify({
+    Title = "Terry Hub Ready!",
+    Content = "Mobile compatibility activated. Enjoy your scripts!",
+    Duration = 5
+})
