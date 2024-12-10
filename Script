@@ -1,96 +1,83 @@
--- Load Rayfield Library
-local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
+-- Load the Rayfield UI Library
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
--- Key System Configuration
-local validKey = "TerryHubMobile123" -- Set your desired key here
-local isAuthenticated = false
-
--- Create the Main Window
+-- Create the Main Window for Terry Hub
 local Window = Rayfield:CreateWindow({
-    Name = "Terry Hub - Mobile Edition",
-    LoadingTitle = "Terry Hub",
-    LoadingSubtitle = "Optimized for Mobile Users!",
+    Name = "Terry Hub",
+    LoadingTitle = "Loading Terry Hub...",
+    LoadingSubtitle = "Please wait",
     ConfigurationSaving = {
         Enabled = true,
-        FolderName = "TerryHubData",
-        FileName = "MobileConfig"
+        FolderName = TerryHub, -- Change to your folder name to save configurations
+        FileName = "TerryHubConfig"
     },
     Discord = {
-        Enabled = true,
-        Invite = "https://discord.gg/FehxdA3w", -- Replace with your Discord invite link
+        Enabled = true, -- Enable Discord integration
+        Invite = "https://discord.gg/FehxdA3w", -- Replace with your Discord invite
         RememberJoins = true
     },
-    KeySystem = true, -- Enable Key System
+    KeySystem = true, -- Enable the key system
     KeySettings = {
         Title = "Terry Hub Key System",
-        Subtitle = "TerryHubBeta",
-        Note = "Find the key in our Discord!",
+        Subtitle = "Enter the Key",
+        Note = "The key will be on our discord community server",
+        FileName = "TerryHubKey",
         SaveKey = true,
-        Key = validKey
+        GrabKeyFromSite = false,
+        Key = "TerryHubBeta" -- Change this to your own key
     }
 })
 
--- Create Scripts Tab
-local ScriptsTab = Window:CreateTab("Scripts", 4483362458) -- Replace with your preferred icon ID
+-- Add the "Main" Tab
+local MainTab = Window:CreateTab("Main", 4483362458) -- Tab icon using Roblox asset ID
 
--- Add Script Buttons
-ScriptsTab:CreateButton({
-    Name = "Infinite Yield Admin",
+-- Add a Button for Script 1: Infinite Yield Execution
+MainTab:CreateButton({
+    Name = "Execute Infinite Yield",
     Callback = function()
+        print("Executing Infinite Yield Script")
+        -- Load the Infinite Yield script
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-    end
+    end,
 })
 
-ScriptsTab:CreateButton({
-    Name = "Vehicle Legends",
+-- Add a Button for Script 2: Change WalkSpeed
+MainTab:CreateButton({
+    Name = "Execute Script 1 - Speed Boost",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/main/Vehicle%20legends"))()
-    end
+        print("Executing Script 1: Speed Boost")
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        if character:FindFirstChild("Humanoid") then
+            character.Humanoid.WalkSpeed = 50 -- Set WalkSpeed to 50
+        end
+    end,
 })
 
-ScriptsTab:CreateButton({
-    Name = "The Strongest Battlegrounds",
+-- Add a Button for Script 3: Spawn a Part
+MainTab:CreateButton({
+    Name = "Execute Script 2 - Spawn Part",
     Callback = function()
-        loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Phantasm-TSB-Script-16254"))()
-    end
+        print("Executing Script 2: Spawning Part")
+        local player = game.Players.LocalPlayer
+        local part = Instance.new("Part")
+        part.Size = Vector3.new(5, 1, 5)
+        part.Position = player.Character.HumanoidRootPart.Position + Vector3.new(0, 5, 0)
+        part.Anchored = true
+        part.Parent = workspace
+    end,
 })
 
-ScriptsTab:CreateButton({
-    Name = "Owl Hub",
+-- Add more buttons or features (Optional)
+MainTab:CreateButton({
+    Name = "Execute Script 3 - Teleport",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))()
-    end
+        print("Executing Script 3: Teleporting Player")
+        local player = game.Players.LocalPlayer
+        local targetPosition = workspace.TeleportTarget.Position -- Ensure there is a part called "TeleportTarget"
+        player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+    end,
 })
 
-ScriptsTab:CreateButton({
-    Name = "Aurora Hub",
-    Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/cocotv666/Aurora/refs/heads/main/Aurora_Loader'))()
-    end
-})
-
--- Add Utility Tab for Extras
-local UtilityTab = Window:CreateTab("Utility", 4483362458) -- Replace with your preferred icon ID
-
-UtilityTab:CreateButton({
-    Name = "Close Terry Hub",
-    Callback = function()
-        Rayfield:Destroy()
-    end
-})
-
--- Add Credits Tab
-local CreditsTab = Window:CreateTab("Credits", 4483362458) -- Replace with your preferred icon ID
-
-CreditsTab:CreateSection("Created By: Dollythete")
-CreditsTab:CreateParagraph({
-    Title = "About Terry Hub",
-    Content = "Terry Hub is optimized for mobile users and offers robust scripting options for Roblox. Join our Discord for updates and support!"
-})
-
--- Notify When Ready
-Rayfield:Notify({
-    Title = "Terry Hub Ready!",
-    Content = "Mobile compatibility activated. Enjoy your scripts!",
-    Duration = 5
-})
+-- Add a Label
+MainTab:CreateLabel("Welcome to Terry Hub - Enjoy your stay!")
