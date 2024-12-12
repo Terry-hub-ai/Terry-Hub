@@ -12,7 +12,7 @@ local Window = OrionLib:MakeWindow({
 -- Animation Tab
 local AnimationTab = Window:MakeTab({
     Name = "Animation",
-    Icon = "rbxassetid://6031302934", -- Replace with a suitable icon
+    Icon = "rbxassetid://6031302934",
     PremiumOnly = false
 })
 
@@ -23,7 +23,6 @@ AnimationTab:AddButton({
     Name = "Winged Master (R6 Only)",
     Callback = function()
         print("Winged Master animation executed!")
-        -- Add animation code here
     end
 })
 
@@ -31,106 +30,164 @@ AnimationTab:AddButton({
     Name = "Rickroll Dance (R6 Only)",
     Callback = function()
         print("Rickroll Dance animation executed!")
-        -- Add animation code here
     end
 })
 
--- Player Tab
-local PlayerTab = Window:MakeTab({
-    Name = "Player",
-    Icon = "rbxassetid://6031302950",
-    PremiumOnly = false
-})
-
-PlayerTab:AddSlider({
-    Name = "Walk Speed",
-    Min = 16,
-    Max = 200,
-    Default = 16,
-    Color = Color3.fromRGB(255, 255, 255),
-    Increment = 1,
-    ValueName = "Speed",
-    Callback = function(value)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
-    end
-})
-
-PlayerTab:AddSlider({
-    Name = "Jump Power",
-    Min = 50,
-    Max = 500,
-    Default = 50,
-    Color = Color3.fromRGB(255, 255, 255),
-    Increment = 1,
-    ValueName = "Power",
-    Callback = function(value)
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
-    end
-})
-
--- Hubs Tab
-local HubsTab = Window:MakeTab({
-    Name = "Hubs",
-    Icon = "rbxassetid://6034509993",
-    PremiumOnly = false
-})
-
-HubsTab:AddButton({
-    Name = "Hub 1",
-    Callback = function()
-        print("Hub 1 loaded!")
-        -- Add hub loading code here
-    end
-})
-
-HubsTab:AddButton({
-    Name = "Hub 2",
-    Callback = function()
-        print("Hub 2 loaded!")
-        -- Add hub loading code here
-    end
-})
-
--- Community Tab (Discord Server Link)
-local CommunityTab = Window:MakeTab({
-    Name = "Community",
-    Icon = "rbxassetid://6031302949",
-    PremiumOnly = false
-})
-
-CommunityTab:AddButton({
-    Name = "Join Discord",
-    Callback = function()
-        setclipboard("https://discord.gg/YourServerInvite")
-        OrionLib:MakeNotification({
-            Name = "Discord Link",
-            Content = "Discord invite copied to clipboard!",
-            Image = "rbxassetid://6031280882",
-            Time = 5
-        })
-    end
-})
-
--- Games Tab (Game-Specific Scripts)
+-- Games Tab
 local GamesTab = Window:MakeTab({
     Name = "Games",
     Icon = "rbxassetid://6034509991",
     PremiumOnly = false
 })
 
+-- Adding all the game scripts with proper names
 GamesTab:AddButton({
-    Name = "Game Script 1",
+    Name = "Root Butter Hub",
     Callback = function()
-        print("Game script 1 executed!")
-        -- Add game-specific script code here
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Butterisgood/Butter/main/Root2.lua'))("")
     end
 })
 
 GamesTab:AddButton({
-    Name = "Game Script 2",
+    Name = "Breaking Point",
     Callback = function()
-        print("Game script 2 executed!")
-        -- Add game-specific script code here
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/2vsh/breakingpoint/main/mainscript.lua'))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Lucky Blocks",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Monke90/Lucky-Blocks/main/Monkeyware"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Universal Script (Pastebin)",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/X361rzKq"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Prison Life Remastered",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/WinterDinder/56-Clubs-Prison-Life-REMASTERED-SCRIPT/main/Main", true))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Mining Simulator 2",
+    Callback = function()
+        loadstring(game:HttpGet('https://github.com/RunDTM/miningsim2/raw/main/script.lua'))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Hades Hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/HadesRblx/src/master/HadesHub.lua", true))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Slap Battles",
+    Callback = function()
+        loadstring(game:HttpGet("https://scriptblox.com/raw/Slap-Battles-Open-source-for-9484"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Aurora Loader",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/cocotv666/Aurora/refs/heads/main/Aurora_Loader'))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "MVSD Script",
+    Callback = function()
+        local scriptURL = 'https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/MVSD.lua'
+        local response = game:HttpGet(scriptURL)
+        local executeScript = loadstring(response)
+        executeScript()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Race Clicker",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/zorluaa/raceclickerfixed/main/XhubRaceFixed", true))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Owl Hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "The Strongest Battlegrounds",
+    Callback = function()
+        loadstring(game:HttpGet("https://rawscripts.net/raw/The-Strongest-Battlegrounds-Phantasm-TSB-Script-16254"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Vehicle Legends",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/main/Vehicle%20legends"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "General Spam Script",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/2dgeneralspam1/scripts-and-stuff/master/scripts/Loadstring9VHD6Wmyi82n", true))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Pet Simulator 99",
+    Callback = function()
+        loadstring(game:HttpGet("https://scriptblox.com/raw/Pet-Simulator-99!-The-Best-Free-PS99-Script-ZapHub-Secret-Santa-Update-24032"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Basketball Legends",
+    Callback = function()
+        loadstring(game:HttpGet("https://scriptblox.com/raw/Basketball-Legends-Free-OP-Support-Wave-Mobiles-Pls-Read-Features-16399"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "FemboyWare",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/kylosilly/femboyware/refs/heads/main/Fisch.lua"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Dusty Trip",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/artemy133563/Utilities/main/ADustyTrip",true))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Binary Hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/BinaryHubOfficial/binaryhub/main/init.lua"))()
+    end
+})
+
+GamesTab:AddButton({
+    Name = "Pastebin Script 2",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/qjTGE5PV"))()
     end
 })
 
@@ -141,24 +198,10 @@ local AdminTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-AdminTab:AddTextbox({
-    Name = "Command Input",
-    Default = "",
-    TextDisappear = true,
-    Callback = function(command)
-        print("Admin Command: " .. command)
-        -- Add code to handle admin commands here
-    end
-})
-
 AdminTab:AddButton({
-    Name = "God Mode",
+    Name = "Infinite Yield",
     Callback = function()
-        local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
-        character.Humanoid.MaxHealth = math.huge
-        character.Humanoid.Health = math.huge
-        print("God Mode activated!")
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
     end
 })
 
@@ -169,8 +212,8 @@ local CreditsTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-CreditsTab:AddLabel("Terry Hub made by Terry")
-CreditsTab:AddLabel("Beta Test")
+CreditsTab:AddLabel("Terry Hub made by YourName")
+CreditsTab:AddLabel("Using Orion Library")
 
 -- Initialize
 OrionLib:Init()
